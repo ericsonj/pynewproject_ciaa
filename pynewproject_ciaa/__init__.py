@@ -1,0 +1,3 @@
+generators = [
+    "ciaa.CIAA"
+]
