@@ -4,7 +4,7 @@ from pathlib import Path
 from pymakelib import nproject
 from pkg_resources import resource_filename
 
-class CIAA(nproject.BasicGenerator):
+class EDU_CIAA_NXP(nproject.BasicGenerator):
     """Generate basic c project for linux gcc
     """
     def info(self):
@@ -74,10 +74,10 @@ class CIAA(nproject.BasicGenerator):
 
         output_dir = Path( Path(os.getcwd()) / Path(obj.project_name)) 
         
-        gzip_file = resource_filename("pynewproject_ciaa.templates", "ciaa_temp.tar.gz")
+        gzip_file = resource_filename("pynewproject_ciaa.templates", "edu_ciaa_nxp.tar.gz")
 
         return {
-            "temp_name":        "ciaa_temp",
+            "temp_name":        "edu_ciaa_nxp",
             "temp_gzip_file":   gzip_file,
             "temp_files":       self.temp_files(),
             "temp_tokens":      temp_tokens,
