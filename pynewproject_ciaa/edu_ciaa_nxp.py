@@ -29,6 +29,7 @@ class EDU_CIAA_NXP(nproject.BasicGenerator):
             "scripts/config.py",
             "scripts/__init__py",
             "scripts/vscode_addon.py",
+            "scripts/ciaa_addon.py",
             "libs/arm_cortexM4lf_math_mk.py",
             "libs/firmware_v3_mk.py",
             ".gitignore"
