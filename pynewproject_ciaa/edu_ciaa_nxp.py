@@ -32,7 +32,8 @@ class EDU_CIAA_NXP(nproject.BasicGenerator):
             "scripts/ciaa_addon.py",
             "libs/arm_cortexM4lf_math_mk.py",
             "libs/firmware_v3_mk.py",
-            ".gitignore"
+            ".gitignore",
+            ".vscode/settings.json"
         ]
 
     def get_attrs(self) -> dict:
