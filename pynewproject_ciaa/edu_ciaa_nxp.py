@@ -36,7 +36,7 @@ class EDU_CIAA_NXP(nproject.BasicGenerator):
             ".vscode/settings.json"
         ]
 
-    def get_attrs(self) -> dict:
+    def get_attrs(self, **kwargs) -> dict:
 
         answers = [
             {
