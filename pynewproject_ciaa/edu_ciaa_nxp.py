@@ -38,6 +38,12 @@ class EDU_CIAA_NXP(nproject.BasicGenerator):
 
     def get_attrs(self, **kwargs) -> dict:
 
+        args = self.parse_args(kwargs['args'])
+
+        temp_tokens = {
+            'date':         datetime.datetime.now().strftime("%b %d %Y"),
+        }
+
         answers = [
             {
                 "type": "input",
@@ -61,20 +67,25 @@ class EDU_CIAA_NXP(nproject.BasicGenerator):
             }
         ]
 
+        prompt_ans = []
+        for a in answers:
+            name = a['name']
+            if name in args:
+                temp_tokens[name] = args[name]
+            else:
+                prompt_ans.append(a)
+
         prompt = nproject.PromptUtil()
 
-        prompt.add_answers(answers)
+        prompt.add_answers(prompt_ans)
         obj = prompt.parse_answers()
 
-        temp_tokens = {
-            'date':         datetime.datetime.now().strftime("%b %d %Y"),
-        }
-        temp_tokens['project_name']         = obj.project_name
-        temp_tokens['author']               = obj.author
-        temp_tokens['firmware_path']        = obj.firmware_path
-        temp_tokens['arm_none_eabi_path']   = obj.arm_none_eabi_path
-
-        output_dir = Path( Path(os.getcwd()) / Path(obj.project_name)) 
+        for a in answers:
+            name = a['name']
+            if hasattr(obj, name):
+                temp_tokens[name] = getattr(obj, name)
+        
+        output_dir = Path( Path(os.getcwd()) / Path(temp_tokens['project_name'])) 
         
         gzip_file = resource_filename("pynewproject_ciaa.templates", "edu_ciaa_nxp.tar.gz")
 
