@@ -14,7 +14,7 @@ setuptools.setup(
     scripts = [],
     url="https://github.com/ericsonj/pynewproject_ciaa",
     license="MIT",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(exclude=("pynewproject_ciaa/templates/edu_ciaa_nxp")),
     package_data={'': ['*.tar.gz']},
     classifiers=[
         "Programming Language :: Python :: 3",
